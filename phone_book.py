@@ -1,4 +1,10 @@
+import tkinter as tk
 import json
+
+
+
+
+
 
 def new():
     name = input('Введите имя абонента ')
@@ -73,14 +79,21 @@ while True:
     elif command == '/stop':
         break
     elif command == '/all':
-        print(phone_book.keys())
+        print(*phone_book.keys(), sep=', ')
+
     elif command == '/new':
         new()
     elif command == '/save':
         save()
     elif command == '/show':
         name_1 = input('Введите имя абонента ')
-        print(*phone_book[name_1])
+        for key,val in phone_book[name_1].items():
+
+            if type(val) == list:
+                print(key,*val)
+            else:
+                print(key,val)
+
     elif command == '/del':
         delete()
     elif command == '/edit':
